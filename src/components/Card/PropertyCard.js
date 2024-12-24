@@ -18,7 +18,7 @@ const PropertyCard = ({ property, onClick }) => {
           <img
             src={property.images[0]}
             alt={property.title}
-            className="w-16 h-16 object-cover rounded-lg"
+            className="w-16 h-16 object-cover rounded-lg bg-no-repeat"
           />
         ) : (
           <div className="w-16 h-16 rounded-lg flex items-center justify-center bg-offwhite">

@@ -20,7 +20,7 @@ const ApartmentCard = ({
   const path = location.pathname;
 
   const settings = {
-    dots: false, // Enable dots
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -37,26 +37,38 @@ const ApartmentCard = ({
         <div className="flex justify-center">
           <div className="bg-white w-[24rem] h-96 rounded-lg overflow-hidden border border-gray-100 shadow-lg shadow-slate-400 hover:shadow-lg hover:shadow-voilet hover:border-voilet transition-shadow duration-500 ease-in-out">
             <div className="w-[24rem] h-48 relative">
-              <Slider {...settings}>
-                {images.length > 0 ? (
-                  images.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image || "/default-image.jpg"}
-                      alt={title || "Apartment"}
-                      className="w-[21rem] h-48 object-cover"
-                      loading="lazy"
-                    />
-                  ))
-                ) : (
+              {images.length > 0 ? (
+                images.length === 1 ? (
+                  // Render a single image without slider
                   <img
-                    src="/default-image.jpg"
-                    alt="Default Apartment"
-                    className="w-48 h-48 object-cover"
+                    src={images[0] || "/default-image.jpg"}
+                    alt={title || "Apartment"}
+                    className="w-full h-48 object-cover"
                     loading="lazy"
                   />
-                )}
-              </Slider>
+                ) : (
+                  // Use Slider for multiple images
+                  <Slider {...settings}>
+                    {images.map((image, index) => (
+                      <img
+                        key={index}
+                        src={image || "/default-image.jpg"}
+                        alt={title || "Apartment"}
+                        className="w-full h-48 object-cover"
+                        loading="lazy"
+                      />
+                    ))}
+                  </Slider>
+                )
+              ) : (
+                // Render default image if no images are provided
+                <img
+                  src="/default-image.jpg"
+                  alt="Default Apartment"
+                  className="w-full h-48 object-cover"
+                  loading="lazy"
+                />
+              )}
               {path === "/" && (
                 <div className="absolute bottom-2 left-2 px-4 py-1 bg-black/60 rounded-xl text-sm text-white font-sans">
                   {views} views last month

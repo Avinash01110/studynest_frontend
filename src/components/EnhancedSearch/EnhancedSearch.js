@@ -201,7 +201,7 @@ const getCitiesForCountry = (countryId) => {
     UK: ["London", "Leicester", "Sheffield", "Manchester", "Birmingham"],
     // CAN: ["Toronto", "Vancouver", "Montreal", "Ottawa", "Calgary"],
     // DEU: ["Berlin", "Munich", "Frankfurt", "Hamburg", "Cologne"],
-    AUS: ["Canberra", "Darwin", "Brisbane", "Perth", "Adelaide"],
+    AUS: ["Canberra", "Darwin", "Brisbane", "Perth", "Adelaide","Sydney"],
   };  
   return cities[countryId] || [];
 };
